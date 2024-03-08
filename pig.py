@@ -1,13 +1,15 @@
 import argparse
 import string, random
 
-print("*****************************")
-print("*                           *")
-print("*    Python ID Generator    *")
-print("*            by             *")
-print("*       Jeff Davies         *")
-print("*                           *")
-print("*****************************")
+print("********************************")
+print("*                              *")
+print("*      Python ID Generator     *")
+print("*              by              *")
+print("*         Jeff Davies          *")
+print("*                              *")
+print("* Example:                     *")
+print("*  python pig.py -m UC -n 10   *")
+print("********************************")
 
 def generate(total, mfg_id):
     for x in range(total):
@@ -23,22 +25,30 @@ def help_message():
 
 # Get arguments
 parser = argparse.ArgumentParser("pig")
-parser.add_argument("--mfg", 
+parser.add_argument("--mfg", "-m",
     help="The manufacturer ID, usually 2 - 3 characters", 
     type=str)
 
-parser.add_argument("-g","--generate", 
+parser.add_argument("-n","--num", 
     help="The number of IDs to generate. Default is 10", 
     type=int)
 
 args = parser.parse_args()
-#print(args.mfg)
-#print(args.generate)
 
 # Ensure all argumants are valid
-if args.generate != None and args.mfg != None:
+# if args.mfg == None:
+#     print("-mfg is None!")
+# else:
+#     print("-mfg is", args.mfg)
+
+# if args.num == None:
+#     print("-num is None!")
+# else:
+#     print("-num is", args.num)
+
+if args.num != None and args.mfg != None:
     # Do the work
-    generate(args.generate, args.mfg)
+    generate(args.num, args.mfg)
 else:
     # Error message
     print("No usable args given. Exiting.")
